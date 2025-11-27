@@ -7,8 +7,8 @@ interface RandomAnimalsProps {
 
 export default function RandomAnimals({randomAnimals}:RandomAnimalsProps) {
   return (
-    <div className="w-full px-6 py-12">
-        <h2 className="text-3xl font-bold text-center mb-8">Animales Destacados</h2>
+    <div className="w-full px-6 xl:px-24 py-12">
+        <h3 className="text-xl font-semibold mb-4">Animales Destacados</h3>
 
         {(!randomAnimals || randomAnimals.length === 0) ? (
           <div className="w-full flex justify-center items-center h-64">

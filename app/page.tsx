@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import {Animal} from "./types/animal"
 import RandomAnimals from "./components/RandomAnimals";
+import Rankings from "./components/Rankings";
 
 export default function Home() {
 
@@ -46,9 +47,10 @@ export default function Home() {
 
       {/* Sección de Destacados */}
       <RandomAnimals randomAnimals={randomAnimals}></RandomAnimals>
-      
 
-      
+      {/* Sección de Rankings */}
+      <Rankings></Rankings>
+        
     </div>
   );
 }
