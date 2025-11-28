@@ -33,10 +33,11 @@ export default function AnimalCard({animal}:AnimalCardProps) {
             {animal.type}
             </span>
 
-            {/* Altura y peso */}
-            <div className="mt-2 text-gray-700 text-sm flex flex-col gap-1">
-                <p><strong>Altura:</strong> {animal.height} cm</p>
-                <p><strong>Peso:</strong> {animal.weight} kg</p>
+            {/* Datos del Animal */}
+            <div className="flex-1">
+                <div className="text-xs text-gray-500">
+                    {animal.category} - {animal.subcategory}
+                </div>
             </div>
         </div>
     </div>
