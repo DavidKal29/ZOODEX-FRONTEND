@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import {Animal} from "./types/animal"
 import RandomAnimals from "./components/RandomAnimals";
 import Rankings from "./components/Rankings";
+import Categories from "./components/Categories";
 
 export default function Home() {
 
@@ -51,6 +52,10 @@ export default function Home() {
       {/* Sección de Rankings */}
       <Rankings></Rankings>
         
+
+      {/* Seccion Categorias */}
+      <Categories></Categories>
+      
     </div>
   );
 }
