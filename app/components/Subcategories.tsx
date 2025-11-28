@@ -51,28 +51,30 @@ export default function Subcategories({name}:SubcategoriesProps) {
             
             (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-                    {subcategories.map((category:Subcategory,index:number)=>(
-                        <div
+                    {subcategories.map((subcategory:Subcategory,index:number)=>(
+                        <a
+                            href={`/subcategories/${encodeURIComponent(subcategory.name.toLowerCase())}`}
+                            target='_blank'
                             key={index}
                             className="card border-2 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 bg-white"
-                            style={{ borderColor: category.color }}
+                            style={{ borderColor: subcategory.color }}
                         >
                             <div
                                 className="h-48 w-full overflow-hidden flex justify-center items-center bg-gradient-to-r from-white via-gray-200 py-4 drop-shadow-md"
-                                style={{ backgroundImage: `linear-gradient(to right, #e5e7eb, ${category.color})` }}
+                                style={{ backgroundImage: `linear-gradient(to right, #e5e7eb, ${subcategory.color})` }}
                             >
                             <img
                                 className="h-full object-contain"
-                                src={`/animals/${category.image}`}
-                                alt={category.name}
+                                src={`/animals/${subcategory.image}`}
+                                alt={subcategory.name}
                             />
                             </div>
 
                             {/* Información de la categoría */}
                             <div className="p-4 flex flex-col gap-2">
-                                <h3 className="text-lg font-semibold">{category.name}</h3>
+                                <h3 className="text-lg font-semibold">{subcategory.name}</h3>
                             </div>
-                        </div>
+                        </a>
                     ))}
 
 
