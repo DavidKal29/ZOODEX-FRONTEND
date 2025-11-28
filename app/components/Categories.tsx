@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner';
 import {Category} from '../types/category'
+import Link from 'next/link';
 
 export default function Categories() {
 
@@ -36,7 +37,7 @@ export default function Categories() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
                 {categories.map((category:Category,index:number)=>(
                     <a
-                        href={`/categories/${category.name}`}
+                        href={`/categories/${encodeURIComponent(category.name.toLowerCase())}`}
                         target='_blank'
                         key={index}
                         className="card border-2 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 bg-white"
