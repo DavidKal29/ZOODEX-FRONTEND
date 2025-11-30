@@ -4,18 +4,18 @@ import {Animal} from '../types/animal'
 import { useRouter } from 'next/navigation';
 import AnimalCard from './AnimalCard';
 
-interface SubcategoryAnimalsProps{
+interface DietAnimalsProps{
     name:string
 }
 
-export default function SubcategoryAnimals({name}:SubcategoryAnimalsProps) {
+export default function DietAnimals({name}:DietAnimalsProps) {
 
     const router = useRouter()
 
     const [animals, setAnimals] = useState<Animal[] | []>([])
 
     const getAnimals = ()=>{
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/getSubcategoryAnimals/${name}`,{
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/getDietAnimals/${name}`,{
             method:'GET',
             credentials:'include'
         })
@@ -58,7 +58,6 @@ export default function SubcategoryAnimals({name}:SubcategoryAnimalsProps) {
 
                 </div>
             )}
-
 
 
             

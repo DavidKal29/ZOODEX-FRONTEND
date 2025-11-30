@@ -2,11 +2,10 @@
 import { useParams } from 'next/navigation';
 import Header from '@/app/components/Header';
 import Banner from '@/app/components/Banner';
-
-import SubcategoryAnimals from '@/app/components/SubcategoryAnimals';
+import DietAnimals from '@/app/components/DietAnimals';
 import { useEffect } from 'react';
 
-export default function SubCategoriesPage() {
+export default function DietsPage() {
 
     const { name } = useParams<{name:string}>();
 
@@ -20,7 +19,7 @@ export default function SubCategoriesPage() {
 
             <Banner></Banner>
 
-            <SubcategoryAnimals name={name}></SubcategoryAnimals>
+            <DietAnimals name={name}></DietAnimals>
                        
         </div>
     )
