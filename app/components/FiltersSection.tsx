@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import {Category} from '../types/category'
 import {Diet} from '../types/diets'
+import {Type} from '../types/type'
 import { toast } from 'sonner';
 import Categories from './Categories';
-import Diets from './Diets';
+import DietsAndTypes from './DietsAndTypes';
 
 export default function FiltersSection() {
     const [categories, setCategories] = useState<Category[] | []>([])
     const [diets, setDiets] = useState<Diet[] | []>([])
+    const [types, setTypes] = useState<Type[] | []>([])
 
     const getAllFilters = ()=>{
         fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/getAllFilters`,{
@@ -20,6 +22,7 @@ export default function FiltersSection() {
             if (data.success) {
                 setCategories(data.categories)
                 setDiets(data.diets)
+                setTypes(data.types)
             }
         
         })
@@ -36,11 +39,8 @@ export default function FiltersSection() {
     
     return (
         <section className='flex flex-col justify-center items-center w-full gap-8'>
-            <Diets diets={diets}></Diets>
-            <Categories categories={categories}></Categories>
-            
-            
-            
+            <DietsAndTypes diets={diets} types={types}></DietsAndTypes>
+            <Categories categories={categories}></Categories> 
         </section>
     )
 }

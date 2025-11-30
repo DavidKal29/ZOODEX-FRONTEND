@@ -1,6 +1,7 @@
-interface Diet{
+interface Type {
     id:number,
     name:string,
     color:string,
     description:string
+
 }
