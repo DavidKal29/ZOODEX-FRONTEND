@@ -1,40 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { toast } from 'sonner';
+import React from 'react'
 import {Category} from '../types/category'
-import Link from 'next/link';
 
-export default function Categories() {
+interface CategoriesProps{
+    categories:Category[]
+}
 
-    const [categories, setCategories] = useState<Category[] | []>([])
-
-    const getCategories = ()=>{
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/getCategories`,{
-            method:'GET',
-            credentials:'include'
-        })
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data);
-            if (data.success) {
-                setCategories(data.categories)
-            }
-        
-        })
-        .catch(error=>{
-            console.log(error);
-            toast.error('Error al enviar los datos')
-        })
-    }
-
-    useEffect(()=>{
-        getCategories()
-    },[])
-    
-    
-    return (
-        <section className="w-full px-6 xl:px-24 py-8">
-            <h3 className="text-xl font-semibold mb-4">Categorías</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+export default function Categories({categories}:CategoriesProps) {
+  return (
+    <section className="w-full px-6 xl:px-24 py-8">
+        <h3 className="text-xl font-semibold mb-4">Explorar por Categoría</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
                 {categories.map((category:Category,index:number)=>(
                     <a
                         href={`/categories/${encodeURIComponent(category.name.toLowerCase())}`}
@@ -47,13 +22,13 @@ export default function Categories() {
                             className="h-48 w-full overflow-hidden flex justify-center items-center bg-gradient-to-r from-white via-gray-200 py-4 drop-shadow-md"
                             style={{ backgroundImage: `linear-gradient(to right, #e5e7eb, ${category.color})` }}
                         >
-                        <img
-                            className="h-full object-contain"
-                            src={`/animals/${category.image}`}
-                            alt={category.name}
-                        />
+                            <img
+                                className="h-full object-contain"
+                                src={`/animals/${category.image}`}
+                                alt={category.name}
+                            />
                         </div>
-
+    
                         {/* Información de la categoría */}
                         <div className="p-4 flex flex-col gap-2">
                             <p className="text-gray-500 text-sm">N&#176; {category.id}</p>
@@ -61,9 +36,8 @@ export default function Categories() {
                         </div>
                     </a>
                 ))}
-
-
+    
             </div>
         </section>
-    )
+  )
 }
