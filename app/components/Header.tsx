@@ -22,10 +22,12 @@ export default function Header() {
                 
                 {/* Para PC */}
                 <div className="hidden lg:flex items-center gap-6">
-                    <a href='/#destacados' className="text-[16px] hover:text-blue-500 duration-500 cursor-pointer">Destacados</a>
+                    
+                    <a href='/#featured' className="text-[16px] hover:text-blue-500 duration-500 cursor-pointer">Destacados</a>
                     <a href='/#rankings' className="text-[16px] hover:text-red-500 duration-500 cursor-pointer">Rankings</a>
-                    <a href='/#categorias' className="text-[16px] hover:text-yellow-500 duration-500 cursor-pointer">Categorías</a>
-                    <a href='/#dietas' className="text-[16px] hover:text-green-500 duration-500 cursor-pointer">Dietas</a>     
+                    <a href='/#dietstypes' className="text-[16px] hover:text-green-500 duration-500 cursor-pointer">Dietas/Tipos</a>  
+                    <a href='/#categories' className="text-[16px] hover:text-yellow-500 duration-500 cursor-pointer">Categorías</a>   
+                    <a href='/all' className="text-[16px] hover:text-orange-500 duration-500 cursor-pointer">ZooDex</a>
                 </div>
 
                 {/* Botón hamburguesa */}
@@ -38,10 +40,11 @@ export default function Header() {
             <nav id="menu_hamburguesa" className={`fixed top-[80px] md:top-[100px] w-[60%] h-screen overflow-y-auto scrollbar-hide bg-white shadow-lg flex flex-col items-start pl-[20px] pt-[30px] gap-[40px] max-[320px]:gap-[20px] duration-300 lg:hidden overflow-y-scroll min-[568px]:flex-row min-[568px]:w-[100%] min-[568px]:justify-center min-[568px]:items-center min-[568px]:h-[80px] min-[568px]:gap-[20px] sm:h-[100px] sm:gap-[30px] md:h-[100px] md:gap-[35px] ${menu ? "right-[0%]" : "right-[-100%]"}`}
             >
                 {/* Links menú mobile */}
-                <a href='/#destacados' className="text-[18px] sm:text-[20px] cursor-pointer">Destacados</a>
+                <a href='/#featured' className="text-[18px] sm:text-[20px] cursor-pointer">Destacados</a>
                 <a href='/#rankings' className="text-[18px] sm:text-[20px] cursor-pointer">Rankings</a>
-                <a href='/#categorias' className="text-[18px] sm:text-[20px] cursor-pointer">Categorías</a>
-                <a href='/#dietas' className="text-[18px] sm:text-[20px] cursor-pointer">Dietas</a>     
+                <a href='/#dietstypes' className="text-[18px] sm:text-[20px] cursor-pointer">Dietas/Tipos</a>
+                <a href='/#categories' className="text-[18px] sm:text-[20px] cursor-pointer">Categorías</a>   
+                <a href='/all' className="text-[18px] sm:text-[20px] cursor-pointer">ZooDex</a>  
             </nav>
         </header>
     )

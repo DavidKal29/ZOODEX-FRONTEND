@@ -7,7 +7,7 @@ interface CategoriesProps{
 
 export default function Categories({categories}:CategoriesProps) {
   return (
-    <section className="w-full px-6 xl:px-24 py-8">
+    <section id='categories' className="w-full px-6 xl:px-24 py-8 scroll-mt-18">
         <h3 className="text-xl font-semibold mb-4">Explorar por Categoría</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
                 {categories.map((category:Category,index:number)=>(

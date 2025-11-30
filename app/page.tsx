@@ -55,10 +55,6 @@ export default function Home() {
       {/* Sección Filtros */}
       <FiltersSection></FiltersSection>
 
-        
-
-      
-      
     </div>
   );
 }

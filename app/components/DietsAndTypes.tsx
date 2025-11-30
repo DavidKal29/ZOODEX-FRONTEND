@@ -27,7 +27,7 @@ export default function DietsAndTypes({diets,types}:DietsAndTypesProps) {
 
 
     return (
-        <section className="w-full px-6 xl:px-24 py-8">
+        <section id='dietstypes' className="w-full px-6 xl:px-24 py-8 scroll-mt-18">
             <h3 className="text-xl font-semibold mb-4">Explorar por Dieta o Tipo</h3>
             <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
                 {diets.map((diet:Diet,index:number)=>(
