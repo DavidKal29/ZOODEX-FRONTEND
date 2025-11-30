@@ -45,7 +45,7 @@ export default function DietsAndTypes({diets,types}:DietsAndTypesProps) {
 
                 {types.map((type:Type,index:number)=>(
                     <a
-                        href={`types/${encodeURIComponent(type.name)}`}
+                        href={`type/${encodeURIComponent(type.name)}`}
                         target='_blank'
                         key={index}
                         className="cursor-pointer flex-1 bg-white rounded-lg p-6 shadow-sm hover:drop-shadow-md hover:scale-105 duration-500 transition-all border-2" 
