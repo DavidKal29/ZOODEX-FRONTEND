@@ -11,7 +11,7 @@ export default function Rankings() {
     
     const icons = ['fa-solid fa-weight-scale','fa-solid fa-arrow-up','fa-solid fa-bolt','fa-solid fa-hourglass','fa-solid fa-skull','fa-solid fa-brain']
     
-    const colors = ['text-orange-800','text-blue-500','text-yellow-500','text-orange-500','text-red-600','text-pink-500']
+    const colors = ['#8B4513', '#3b82f6', '#facc15', '#fb923c', '#dc2626', '#ec4899', ]
     
 
     const getRankings = ()=>{
@@ -43,17 +43,22 @@ export default function Rankings() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {Object.keys(rankings).map((key:string, index:number) => (
-                    <div key={index} className="bg-white rounded-lg p-4 shadow-sm hover:scale-105 duration-300 cursor-pointer transition-all hover:shadow-2xl">
+                    <a  
+                        href={`/ranking/${encodeURIComponent(key)}`}
+                        target='_blank'
+                        key={index} 
+                        className="bg-white rounded-lg p-4 shadow-sm hover:scale-105 duration-300 cursor-pointer transition-all hover:shadow-2xl"
+                    >
                         {/* Titulo del ranking */}
                         <h4 className="font-semibold mb-3 flex items-center gap-2">
-                            {key} <i className={`${icons[index]} ${colors[index]}` }></i>
+                            {key} <i className={`${icons[index]}` } style={{color:colors[index]}}></i>
                         </h4>
 
                         {/* Lista con todos los animales de ese ranking */}
                         <ol className="pl-5 space-y-3 text-sm text-black">
                             {rankings[key].map((animal:Animal, index2:number) => (
                                 <li key={index2} className="flex items-center gap-3 py-1">
-                                    <div className={`text-sm font-extrabold ${colors[index]}`}>
+                                    <div className={`text-sm font-extrabold`} style={{color:colors[index]}}>
                                         {index2 + 1}
                                     </div>
 
@@ -75,7 +80,7 @@ export default function Rankings() {
                                 </li>
                             ))}
                         </ol>
-                    </div>
+                    </a>
                 ))}
             </div>
         </section>

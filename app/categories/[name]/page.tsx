@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 export default function CategoriesPage() {
 
-    const { name } = useParams();
+    const { name } = useParams<{name:string}>();
 
     useEffect(()=>{
         document.title = `${decodeURIComponent(name[0].toUpperCase() + name.slice(1))}`

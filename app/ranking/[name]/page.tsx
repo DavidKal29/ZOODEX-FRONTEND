@@ -2,19 +2,21 @@
 import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner';
 import {Animal} from '../types/animal'
-import { useRouter } from 'next/navigation';
-import AllAnimals from '../components/AllAnimals';
-import Header from '../components/Header';
-import Banner from '../components/Banner';
+import { useParams, useRouter } from 'next/navigation';
+import FullRanking from '@/app/components/FullRanking';
+import Header from '@/app/components/Header';
+import Banner from '@/app/components/Banner';
 
-export default function All() {
+export default function Ranking() {
 
     const router = useRouter()
+    
+    const { name } = useParams<{name:string}>();
 
-    const [animals, setAnimals] = useState<Animal[] | []>([])
+    const [ranking, setRanking] = useState<Animal[] | []>([])
 
     const getAnimals = ()=>{
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/getAllAnimals`,{
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/getFullRanking/${name}`,{
             method:'GET',
             credentials:'include'
         })
@@ -22,7 +24,7 @@ export default function All() {
         .then(data=>{
             console.log(data);
             if (data.success) {
-                setAnimals(data.animals)
+                setRanking(data.ranking)
             }else{
                 router.push('/*')
             }
@@ -36,7 +38,7 @@ export default function All() {
 
     useEffect(()=>{
         getAnimals()
-        document.title = 'ZooDex'
+        document.title = `${decodeURIComponent(name)}`
     },[])
     
     
@@ -47,7 +49,7 @@ export default function All() {
         
             <Banner></Banner>
 
-            <AllAnimals animals={animals}></AllAnimals>                         
+            <FullRanking ranking={ranking} name={name}></FullRanking>                         
         </div>
         
     )

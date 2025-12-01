@@ -21,8 +21,8 @@ export default function DietsAndTypes({diets,types}:DietsAndTypesProps) {
         'fa-solid fa-water',
         'fa-solid fa-frog',
         'fa-solid fa-dove',
-        'fa-solid fa-tree',
-        'fa-solid fa-bore-hole'
+        'fa-solid fa-house',
+        'fa-solid fa-tree'
     ]
 
 
