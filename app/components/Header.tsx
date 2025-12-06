@@ -65,6 +65,7 @@ export default function Header() {
                         />
                     </div>
 
+                    <button onClick={()=>{goToSection('featured')}} className="text-[16px] hover:text-blue-500 duration-500 cursor-pointer">Admin</button>
                     <button onClick={()=>{goToSection('featured')}} className="text-[16px] hover:text-blue-500 duration-500 cursor-pointer">Destacados</button>
                     <button onClick={()=>{goToSection('rankings')}} className="text-[16px] hover:text-red-500 duration-500 cursor-pointer">Rankings</button>
                     <button onClick={()=>{goToSection('dietstypes')}} className="text-[16px] hover:text-green-500 duration-500 cursor-pointer">Dietas/Tipos</button>  
@@ -109,6 +110,7 @@ export default function Header() {
 
 
                 {/* Links menú mobile */}
+                <button onClick={()=>{goToSection('featured')}} className="text-[18px] sm:text-[20px] cursor-pointer">Admin</button>
                 <button onClick={()=>{goToSection('featured')}} className="text-[18px] sm:text-[20px] cursor-pointer">Destacados</button>
                 <button onClick={()=>{goToSection('rankings')}} className="text-[18px] sm:text-[20px] cursor-pointer">Rankings</button>
                 <button onClick={()=>{goToSection('dietstypes')}} className="text-[18px] sm:text-[20px] cursor-pointer">Dietas/Tipos</button>
