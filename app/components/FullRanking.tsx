@@ -5,10 +5,12 @@ import RankingAnimalCard from './RankingAnimalCard'
 
 interface FullRankingProps{
     ranking:Animal[],
-    name:string
+    name:string,
+    totalPages:number,
+    page:number
 }
 
-export default function FullRanking({ranking,name}:FullRankingProps) {
+export default function FullRanking({ranking,name,totalPages,page}:FullRankingProps) {
 
     const titles = ['Más Pesados','Más Altos','Más Rapidos','Más Longevos','Más Peligrosos','Más Inteligentes']
 
@@ -34,6 +36,21 @@ export default function FullRanking({ranking,name}:FullRankingProps) {
             ) : 
                     
             (
+                <div className='grid grid-cols-1 gap-6 '>
+                {/* Paginación Superior*/}
+                <div className="flex justify-center items-center gap-2 mt-4 lg:mt-6 gap-4 flex-wrap">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((p, index) => (
+                    <a
+                        href={`/all/${index +  1}`}
+                        key={index}
+                        className={`flex justify-center items-center ${p === page ? 'bg-gray-700' : 'bg-gray-400'} text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition`}
+                    >
+                        {p}
+                    </a>
+
+                    ))}
+                </div>
+                
                 <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6">
                     {ranking.map((animal:Animal,i:number)=>(
                         <RankingAnimalCard 
@@ -47,6 +64,23 @@ export default function FullRanking({ranking,name}:FullRankingProps) {
                     ))}
                 
                 </div>
+
+                {/* Paginación Inferior*/}
+                <div className="flex justify-center items-center gap-2 mt-4 lg:mt-6 gap-4 flex-wrap">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((p, index) => (
+                    <a
+                        href={`/all/${index +  1}`}
+                        key={index}
+                        className={`flex justify-center items-center ${p === page ? 'bg-gray-700' : 'bg-gray-400'} text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition`}
+                    >
+                        {p}
+                    </a>
+
+                    ))}
+                </div>
+
+            </div>
+                
             )}
         </section>
     )

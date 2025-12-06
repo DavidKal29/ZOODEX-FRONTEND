@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner';
-import {Animal} from '../types/animal'
+import {Animal} from '../../../types/animal'
 import { useParams, useRouter } from 'next/navigation';
 import FullRanking from '@/app/components/FullRanking';
 import Header from '@/app/components/Header';
@@ -11,12 +11,16 @@ export default function Ranking() {
 
     const router = useRouter()
     
-    const { name } = useParams<{name:string}>();
+    const { name, page } = useParams<{name: string; page: string}>();
+
+    const [totalPages, setTotalPages] = useState<number | 0>(0)
+
+    const pageNumber = page ? parseInt(page, 10) : 1
 
     const [ranking, setRanking] = useState<Animal[] | []>([])
 
     const getAnimals = ()=>{
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/getFullRanking/${name}`,{
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/getFullRanking/${name}/${pageNumber}`,{
             method:'GET',
             credentials:'include'
         })
@@ -25,6 +29,7 @@ export default function Ranking() {
             console.log(data);
             if (data.success) {
                 setRanking(data.ranking)
+                setTotalPages(data.total_pages)
             }else{
                 router.push('/*')
             }
@@ -49,7 +54,7 @@ export default function Ranking() {
         
             <Banner></Banner>
 
-            <FullRanking ranking={ranking} name={name}></FullRanking>                         
+            <FullRanking ranking={ranking} name={name} totalPages={totalPages} page={pageNumber}></FullRanking>                         
         </div>
         
     )

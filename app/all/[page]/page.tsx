@@ -15,12 +15,12 @@ export default function All() {
     
     const [totalPages, setTotalPages] = useState<number | 0>(0)
 
-    const params = useParams()
-
-    const page = parseInt(params.page)
+    const { page } = useParams<{page: string}>();
+    
+    const pageNumber = page ? parseInt(page, 10) : 1
 
     const getAnimals = ()=>{
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/getAllAnimals/${page}`,{
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/getAllAnimals/${pageNumber}`,{
             method:'GET',
             credentials:'include'
         })
@@ -54,7 +54,7 @@ export default function All() {
         
             <Banner></Banner>
 
-            <AllAnimals animals={animals} page={page} totalPages={totalPages}></AllAnimals>                         
+            <AllAnimals animals={animals} page={pageNumber} totalPages={totalPages}></AllAnimals>                         
         </div>
         
     )
