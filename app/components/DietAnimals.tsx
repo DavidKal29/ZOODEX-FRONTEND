@@ -3,19 +3,23 @@ import { toast } from 'sonner';
 import {Animal} from '../types/animal'
 import { useRouter } from 'next/navigation';
 import AnimalCard from './AnimalCard';
+import Pagination from './Pagination';
 
 interface DietAnimalsProps{
-    name:string
+    name:string,
+    page:number
 }
 
-export default function DietAnimals({name}:DietAnimalsProps) {
+export default function DietAnimals({name,page}:DietAnimalsProps) {
 
     const router = useRouter()
 
     const [animals, setAnimals] = useState<Animal[] | []>([])
 
+    const [totalPages,setTotalPages] = useState<number | 0>(0)
+
     const getAnimals = ()=>{
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/getDietAnimals/${name}`,{
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/getDietAnimals/${name}/${page}`,{
             method:'GET',
             credentials:'include'
         })
@@ -24,6 +28,7 @@ export default function DietAnimals({name}:DietAnimalsProps) {
             console.log(data);
             if (data.success) {
                 setAnimals(data.animals)
+                setTotalPages(data.total_pages)
             }else{
                 router.push('/*')
             }
@@ -51,11 +56,19 @@ export default function DietAnimals({name}:DietAnimalsProps) {
             ) : 
             
             (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-                    {animals.map((animal:Animal,index:number)=>(
-                        <AnimalCard key={index} animal={animal}></AnimalCard>
-                    ))}
-
+                <div className='grid grid-cols-1 gap-6 '>
+                    {/* Paginación Superior*/}
+                    <Pagination totalPages={totalPages} page={page} link={`diets/${name}`}></Pagination>
+                                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                        {animals.map((animal:Animal,index:number)=>(
+                            <AnimalCard key={index} animal={animal}></AnimalCard>
+                        ))}
+                    </div>
+                    
+                    {/* Paginación Inferior*/}
+                    <Pagination totalPages={totalPages} page={page} link={`diets/${name}`}></Pagination>
+                
                 </div>
             )}
 

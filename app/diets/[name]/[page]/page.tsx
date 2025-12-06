@@ -7,8 +7,10 @@ import { useEffect } from 'react';
 
 export default function DietsPage() {
 
-    const { name } = useParams<{name:string}>();
-
+    const { name, page } = useParams<{name: string; page: string}>();
+    
+    const pageNumber = page ? parseInt(page, 10) : 1
+    
     useEffect(()=>{
         document.title = `${decodeURIComponent(name[0].toUpperCase() + name.slice(1))}`
     },[])
@@ -19,7 +21,7 @@ export default function DietsPage() {
 
             <Banner></Banner>
 
-            <DietAnimals name={name}></DietAnimals>
+            <DietAnimals name={name} page={pageNumber}></DietAnimals>
                        
         </div>
     )

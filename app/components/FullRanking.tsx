@@ -38,27 +38,27 @@ export default function FullRanking({ranking,name,totalPages,page}:FullRankingPr
                     
             (
                 <div className='grid grid-cols-1 gap-6 '>
-                {/* Paginación Superior*/}
-                <Pagination totalPages={totalPages} page={page} link={`ranking/${name}`}></Pagination>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-                    {ranking.map((animal:Animal,i:number)=>(
-                        <RankingAnimalCard 
-                            key={i} 
-                            animal={animal} 
-                            top={((page - 1) * 30) + (i + 1)} 
-                            color={colors[index]}
-                            feature={features[index]}
-                            medide={medides[index]}
-                        ></RankingAnimalCard>
-                    ))}
-                
+                    {/* Paginación Superior*/}
+                    <Pagination totalPages={totalPages} page={page} link={`ranking/${name}`}></Pagination>
+                    
+                    <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+                        {ranking.map((animal:Animal,i:number)=>(
+                            <RankingAnimalCard 
+                                key={i} 
+                                animal={animal} 
+                                top={((page - 1) * 30) + (i + 1)} 
+                                color={colors[index]}
+                                feature={features[index]}
+                                medide={medides[index]}
+                            ></RankingAnimalCard>
+                        ))}
+                    
+                    </div>
+
+                    {/* Paginación Inferior*/}
+                    <Pagination totalPages={totalPages} page={page} link={`ranking/${name}`}></Pagination>
+
                 </div>
-
-                {/* Paginación Inferior*/}
-                <Pagination totalPages={totalPages} page={page} link={`ranking/${name}`}></Pagination>
-
-            </div>
                 
             )}
         </section>
