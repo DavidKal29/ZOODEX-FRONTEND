@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Animal} from "../types/animal"
 import AnimalCard from './AnimalCard'
 
@@ -7,6 +7,18 @@ interface RandomAnimalsProps {
 }
 
 export default function RandomAnimals({randomAnimals}:RandomAnimalsProps) {
+
+  useEffect(() => {
+    if (randomAnimals.length > 0 && window.location.hash === '#featured') {
+      const element = document.getElementById("featured")
+  
+      if (element) {
+        const y = element.getBoundingClientRect().top + window.pageYOffset - 72 
+        window.scrollTo({ top: y })
+      }
+    }
+  }, [randomAnimals])
+  
   return (
     <section id='featured' className="w-full px-6 xl:px-24 py-8 scroll-mt-18">
         <h3 className="text-xl font-semibold mb-4">Animales Destacados</h3>

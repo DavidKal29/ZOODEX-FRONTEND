@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Category} from '../types/category'
 
 interface CategoriesProps{
@@ -6,6 +6,17 @@ interface CategoriesProps{
 }
 
 export default function Categories({categories}:CategoriesProps) {
+  useEffect(() => {
+    if (categories.length > 0 && window.location.hash === '#categories') {
+      const element = document.getElementById("categories")
+    
+      if (element) {
+        const y = element.getBoundingClientRect().top + window.pageYOffset - 72 
+        window.scrollTo({ top: y })
+      }
+    }
+  }, [categories])
+  
   return (
     <section id='categories' className="w-full px-6 xl:px-24 py-8 scroll-mt-18">
         <h3 className="text-xl font-semibold mb-4">Explorar por Categoría</h3>

@@ -10,7 +10,9 @@ export default function Header() {
     const searchParam = params?.search ?? ''
 
     
-    useState(() => setSearch(decodeURIComponent(searchParam)));
+    useEffect(()=>{
+        setSearch(decodeURIComponent(searchParam))
+    },[searchParam])
 
 
     const handleSearch = (e:React.KeyboardEvent<HTMLInputElement>)=>{
@@ -23,6 +25,10 @@ export default function Header() {
         if (search.trim() != '') {
             router.push(`/search/${search.trim()}`)
         }
+    }
+
+    const goToSection = (id:string)=>{
+        router.push(`/#${id}`)
     }
 
     
@@ -59,10 +65,10 @@ export default function Header() {
                         />
                     </div>
 
-                    <a href='/#featured' className="text-[16px] hover:text-blue-500 duration-500 cursor-pointer">Destacados</a>
-                    <a href='/#rankings' className="text-[16px] hover:text-red-500 duration-500 cursor-pointer">Rankings</a>
-                    <a href='/#dietstypes' className="text-[16px] hover:text-green-500 duration-500 cursor-pointer">Dietas/Tipos</a>  
-                    <a href='/#categories' className="text-[16px] hover:text-yellow-500 duration-500 cursor-pointer">Categorías</a>   
+                    <button onClick={()=>{goToSection('featured')}} className="text-[16px] hover:text-blue-500 duration-500 cursor-pointer">Destacados</button>
+                    <button onClick={()=>{goToSection('rankings')}} className="text-[16px] hover:text-red-500 duration-500 cursor-pointer">Rankings</button>
+                    <button onClick={()=>{goToSection('dietstypes')}} className="text-[16px] hover:text-green-500 duration-500 cursor-pointer">Dietas/Tipos</button>  
+                    <button onClick={()=>{goToSection('categories')}} className="text-[16px] hover:text-yellow-500 duration-500 cursor-pointer">Categorías</button>   
                     <a href='/all' className="text-[16px] hover:text-orange-500 duration-500 cursor-pointer">ZooDex</a>
                 </div>
 
@@ -103,10 +109,10 @@ export default function Header() {
 
 
                 {/* Links menú mobile */}
-                <a href='/#featured' className="text-[18px] sm:text-[20px] cursor-pointer">Destacados</a>
-                <a href='/#rankings' className="text-[18px] sm:text-[20px] cursor-pointer">Rankings</a>
-                <a href='/#dietstypes' className="text-[18px] sm:text-[20px] cursor-pointer">Dietas/Tipos</a>
-                <a href='/#categories' className="text-[18px] sm:text-[20px] cursor-pointer">Categorías</a>   
+                <button onClick={()=>{goToSection('featured')}} className="text-[18px] sm:text-[20px] cursor-pointer">Destacados</button>
+                <button onClick={()=>{goToSection('rankings')}} className="text-[18px] sm:text-[20px] cursor-pointer">Rankings</button>
+                <button onClick={()=>{goToSection('dietstypes')}} className="text-[18px] sm:text-[20px] cursor-pointer">Dietas/Tipos</button>
+                <button onClick={()=>{goToSection('categories')}} className="text-[18px] sm:text-[20px] cursor-pointer">Categorías</button>   
                 <a href='/all' className="text-[18px] sm:text-[20px] cursor-pointer">ZooDex</a>  
             </nav>
         </header>

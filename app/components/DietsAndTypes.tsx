@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Diet} from '../types/diets'
 import {Type} from '../types/type'
 
@@ -24,6 +24,18 @@ export default function DietsAndTypes({diets,types}:DietsAndTypesProps) {
         'fa-solid fa-house',
         'fa-solid fa-tree'
     ]
+    
+    useEffect(() => {
+    if (diets.length > 0 && window.location.hash === '#dietstypes') {
+        const element = document.getElementById("dietstypes")
+
+        if (element) {
+            const y = element.getBoundingClientRect().top + window.pageYOffset - 72 
+            window.scrollTo({ top: y })
+        }
+    }
+    }, [diets])
+
 
 
     return (

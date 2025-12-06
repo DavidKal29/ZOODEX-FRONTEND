@@ -36,6 +36,18 @@ export default function Rankings() {
     useEffect(()=>{
         getRankings()
     },[])
+
+    useEffect(() => {
+        if (rankings.length > 0 && window.location.hash === '#rankings') {
+            const element = document.getElementById("rankings")
+    
+            if (element) {
+                const y = element.getBoundingClientRect().top + window.pageYOffset - 72
+                window.scrollTo({ top: y })
+            }
+        }
+    }, [rankings])
+    
   
     return (
         <section id='rankings' className="w-full px-6 xl:px-24 py-8 scroll-mt-18">
