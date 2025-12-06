@@ -9,7 +9,7 @@ interface FullRankingProps{
     ranking:Animal[],
     name:string,
     totalPages:number,
-    page:number
+    page:string
 }
 
 export default function FullRanking({ranking,name,totalPages,page}:FullRankingProps) {
@@ -46,7 +46,7 @@ export default function FullRanking({ranking,name,totalPages,page}:FullRankingPr
                             <RankingAnimalCard 
                                 key={i} 
                                 animal={animal} 
-                                top={((page - 1) * 30) + (i + 1)} 
+                                top={((parseInt(page,10) - 1) * 30) + (i + 1)} 
                                 color={colors[index]}
                                 feature={features[index]}
                                 medide={medides[index]}

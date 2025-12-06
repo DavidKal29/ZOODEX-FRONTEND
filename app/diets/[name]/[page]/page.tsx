@@ -9,8 +9,6 @@ export default function DietsPage() {
 
     const { name, page } = useParams<{name: string; page: string}>();
     
-    const pageNumber = page ? parseInt(page, 10) : 1
-    
     useEffect(()=>{
         document.title = `${decodeURIComponent(name[0].toUpperCase() + name.slice(1))}`
     },[])
@@ -21,7 +19,7 @@ export default function DietsPage() {
 
             <Banner></Banner>
 
-            <DietAnimals name={name} page={pageNumber}></DietAnimals>
+            <DietAnimals name={name} page={page}></DietAnimals>
                        
         </div>
     )

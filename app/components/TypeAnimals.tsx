@@ -7,7 +7,7 @@ import Pagination from './Pagination';
 
 interface TypeAnimalsProps{
     name:string,
-    page:number
+    page:string
 }
 
 export default function TypeAnimals({name,page}:TypeAnimalsProps) {

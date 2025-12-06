@@ -5,7 +5,7 @@ import Pagination from './Pagination'
 
 interface AllAnimalsProps{
     animals:Animal[],
-    page:number,
+    page:string,
     totalPages:number
 }
 

@@ -15,12 +15,10 @@ export default function Ranking() {
 
     const [totalPages, setTotalPages] = useState<number | 0>(0)
 
-    const pageNumber = page ? parseInt(page, 10) : 1
-
     const [ranking, setRanking] = useState<Animal[] | []>([])
 
     const getAnimals = ()=>{
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/getFullRanking/${name}/${pageNumber}`,{
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/getFullRanking/${name}/${page}`,{
             method:'GET',
             credentials:'include'
         })
@@ -54,7 +52,7 @@ export default function Ranking() {
         
             <Banner></Banner>
 
-            <FullRanking ranking={ranking} name={name} totalPages={totalPages} page={pageNumber}></FullRanking>                         
+            <FullRanking ranking={ranking} name={name} totalPages={totalPages} page={page}></FullRanking>                         
         </div>
         
     )

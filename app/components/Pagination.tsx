@@ -1,7 +1,7 @@
 import React from 'react'
 interface PaginationProps{
     totalPages:number,
-    page:number,
+    page:string,
     link:string
 }
 
@@ -12,7 +12,7 @@ export default function Pagination({totalPages,page,link}:PaginationProps) {
         <a
             href={`/${link}/${index +  1}`}
             key={index}
-            className={`flex justify-center items-center ${p === page ? 'bg-gray-700' : 'bg-gray-400'} text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition`}
+            className={`flex justify-center items-center ${p === parseInt(page,10) ? 'bg-gray-700' : 'bg-gray-400'} text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition`}
         >
             {p}
         </a>

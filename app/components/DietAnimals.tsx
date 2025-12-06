@@ -7,7 +7,7 @@ import Pagination from './Pagination';
 
 interface DietAnimalsProps{
     name:string,
-    page:number
+    page:string
 }
 
 export default function DietAnimals({name,page}:DietAnimalsProps) {
