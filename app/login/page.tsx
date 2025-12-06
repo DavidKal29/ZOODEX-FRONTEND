@@ -7,6 +7,23 @@ import Header from '../components/Header'
 export default function Login() {
     const [form, setForm] = useState({ email: '', password: '' })
 
+    const getDashboard = ()=>{
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/dashboard/`, {
+            credentials: 'include',
+            method: 'GET'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                toast.success(data.success)
+                
+            } else {
+                toast.error(data.error)
+            }
+        })
+        .catch(() => { toast.error('Error al enviar datos') })
+    }
+
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
@@ -35,6 +52,10 @@ export default function Login() {
     useEffect(() => {
         document.title = 'Login Admin'
     }, [])
+
+    useEffect(()=>{
+        getDashboard()
+    },[])
 
     return (
         <div className="flex flex-col justify-center items-center bg-gradient-to-r from-gray-300 via-white to-gray-300 min-h-screen">
