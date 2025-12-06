@@ -50,9 +50,6 @@ export default function AnimalPage() {
             <Banner></Banner>   
 
             <AnimalInfo animal={animal}></AnimalInfo>
-
-            
-
         </div>
     )
 }

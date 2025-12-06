@@ -1,20 +1,26 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner';
-import {Animal} from '../types/animal'
-import { useRouter } from 'next/navigation';
-import AllAnimals from '../components/AllAnimals';
-import Header from '../components/Header';
-import Banner from '../components/Banner';
+import {Animal} from '../../types/animal'
+import { useParams, useRouter } from 'next/navigation';
+import AllAnimals from '@/app/components/AllAnimals';
+import Header from '@/app/components/Header';
+import Banner from '@/app/components/Banner';
 
 export default function All() {
 
     const router = useRouter()
 
     const [animals, setAnimals] = useState<Animal[] | []>([])
+    
+    const [totalPages, setTotalPages] = useState<number | 0>(0)
+
+    const params = useParams()
+
+    const page = parseInt(params.page)
 
     const getAnimals = ()=>{
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/getAllAnimals`,{
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/getAllAnimals/${page}`,{
             method:'GET',
             credentials:'include'
         })
@@ -23,6 +29,7 @@ export default function All() {
             console.log(data);
             if (data.success) {
                 setAnimals(data.animals)
+                setTotalPages(data.total_pages)
             }else{
                 router.push('/*')
             }
@@ -47,7 +54,7 @@ export default function All() {
         
             <Banner></Banner>
 
-            <AllAnimals animals={animals}></AllAnimals>                         
+            <AllAnimals animals={animals} page={page} totalPages={totalPages}></AllAnimals>                         
         </div>
         
     )
