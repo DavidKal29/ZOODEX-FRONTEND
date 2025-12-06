@@ -41,6 +41,13 @@ export default function Rankings() {
         <section id='rankings' className="w-full px-6 xl:px-24 py-8 scroll-mt-18">
             <h3 className="text-xl font-semibold mb-4">Rankings</h3>
 
+            {(!rankings || rankings.length === 0) ? (
+            <div className="w-full flex justify-center items-center h-64">
+                <p className="text-gray-500 text-[25px]">Cargando...</p>
+            </div>
+            ) : 
+            
+            (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {Object.keys(rankings).map((key:string, index:number) => (
                     <a  
@@ -83,6 +90,9 @@ export default function Rankings() {
                     </a>
                 ))}
             </div>
+            )}
+
+            
         </section>
        
     )

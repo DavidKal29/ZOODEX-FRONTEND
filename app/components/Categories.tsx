@@ -9,6 +9,14 @@ export default function Categories({categories}:CategoriesProps) {
   return (
     <section id='categories' className="w-full px-6 xl:px-24 py-8 scroll-mt-18">
         <h3 className="text-xl font-semibold mb-4">Explorar por Categoría</h3>
+
+        {(!categories || categories.length === 0) ? (
+            <div className="w-full flex justify-center items-center h-64">
+                <p className="text-gray-500 text-[25px]">Cargando...</p>
+            </div>
+        ) : 
+                
+        (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
                 {categories.map((category:Category,index:number)=>(
                     <a
@@ -38,6 +46,10 @@ export default function Categories({categories}:CategoriesProps) {
                 ))}
     
             </div>
-        </section>
+        )}
+
+
+            
+    </section>
   )
 }

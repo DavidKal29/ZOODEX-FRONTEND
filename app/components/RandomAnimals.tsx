@@ -8,7 +8,7 @@ interface RandomAnimalsProps {
 
 export default function RandomAnimals({randomAnimals}:RandomAnimalsProps) {
   return (
-    <div id='featured' className="w-full px-6 xl:px-24 py-8 scroll-mt-18">
+    <section id='featured' className="w-full px-6 xl:px-24 py-8 scroll-mt-18">
         <h3 className="text-xl font-semibold mb-4">Animales Destacados</h3>
 
         {(!randomAnimals || randomAnimals.length === 0) ? (
@@ -24,6 +24,6 @@ export default function RandomAnimals({randomAnimals}:RandomAnimalsProps) {
             ))}
           </div>
         )}
-      </div>
+      </section>
   )
 }
