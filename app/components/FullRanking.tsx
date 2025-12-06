@@ -2,6 +2,8 @@ import React from 'react'
 import {Animal} from '../types/animal'
 import AnimalCard from './AnimalCard'
 import RankingAnimalCard from './RankingAnimalCard'
+import { useParams } from 'next/navigation'
+import Pagination from './Pagination'
 
 interface FullRankingProps{
     ranking:Animal[],
@@ -22,7 +24,6 @@ export default function FullRanking({ranking,name,totalPages,page}:FullRankingPr
     
     const colors = ['#8B4513', '#3b82f6', '#facc15', '#fb923c', '#dc2626', '#ec4899', ]
 
-
     const index = titles.findIndex(t=>t === decodeURIComponent(name))
   
     return (
@@ -38,25 +39,14 @@ export default function FullRanking({ranking,name,totalPages,page}:FullRankingPr
             (
                 <div className='grid grid-cols-1 gap-6 '>
                 {/* Paginación Superior*/}
-                <div className="flex justify-center items-center gap-2 mt-4 lg:mt-6 gap-4 flex-wrap">
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((p, index) => (
-                    <a
-                        href={`/all/${index +  1}`}
-                        key={index}
-                        className={`flex justify-center items-center ${p === page ? 'bg-gray-700' : 'bg-gray-400'} text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition`}
-                    >
-                        {p}
-                    </a>
-
-                    ))}
-                </div>
+                <Pagination totalPages={totalPages} page={page} link={`ranking/${name}`}></Pagination>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6">
                     {ranking.map((animal:Animal,i:number)=>(
                         <RankingAnimalCard 
                             key={i} 
                             animal={animal} 
-                            top={i+1} 
+                            top={((page - 1) * 30) + (i + 1)} 
                             color={colors[index]}
                             feature={features[index]}
                             medide={medides[index]}
@@ -66,18 +56,7 @@ export default function FullRanking({ranking,name,totalPages,page}:FullRankingPr
                 </div>
 
                 {/* Paginación Inferior*/}
-                <div className="flex justify-center items-center gap-2 mt-4 lg:mt-6 gap-4 flex-wrap">
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((p, index) => (
-                    <a
-                        href={`/all/${index +  1}`}
-                        key={index}
-                        className={`flex justify-center items-center ${p === page ? 'bg-gray-700' : 'bg-gray-400'} text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition`}
-                    >
-                        {p}
-                    </a>
-
-                    ))}
-                </div>
+                <Pagination totalPages={totalPages} page={page} link={`ranking/${name}`}></Pagination>
 
             </div>
                 
