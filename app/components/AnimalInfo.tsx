@@ -25,9 +25,9 @@ export default function AnimalInfo({animal, user}: AnimalInfoProps) {
 
         {/* Boton de Admin */}
         {user && (
-          <button className="bg-red-500 z-10 text-white cursor-pointer absolute rounded-full w-10 h-10 flex justify-center items-center -top-3 -right-1">
+          <a href={`/editAnimal/${animal.id}`} className="bg-red-500 z-10 text-white cursor-pointer absolute rounded-full w-10 h-10 flex justify-center items-center -top-3 -right-1">
             <p><i className="fa-solid fa-pen"></i></p>
-          </button>
+          </a>
         )}
         
         {/* Imagen */}
@@ -83,9 +83,7 @@ export default function AnimalInfo({animal, user}: AnimalInfoProps) {
 
             <AnimalStatCard icon="fa-bolt" color="text-red-600" title="Velocidad"
               value={`${animal.speed} km/h`}
-            />
-
-            
+            />    
 
           </div>
 
