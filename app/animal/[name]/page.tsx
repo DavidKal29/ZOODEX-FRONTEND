@@ -6,6 +6,7 @@ import { useRouter, useParams } from 'next/navigation'
 import { toast } from 'sonner'
 import {Animal} from '../../types/animal'
 import AnimalInfo from '@/app/components/AnimalInfo'
+import {User} from '../../types/user'
 
 export default function AnimalPage() {    
     
@@ -14,6 +15,8 @@ export default function AnimalPage() {
     const { name } = useParams<{name:string}>();
 
     const [animal, setAnimal] = useState<Animal | null>(null)
+
+    const [user,setUser] = useState<User | null>(null)
 
     const getAnimal = ()=>{
         fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/getAnimal/${name}`,{
@@ -36,9 +39,24 @@ export default function AnimalPage() {
         })
     }
 
+    const getDashboard = ()=>{
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/dashboard/`, {
+            credentials: 'include',
+            method: 'GET'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                setUser(data.user)
+            }
+        })
+        .catch(() => { toast.error('Error al enviar datos') })
+    }
+
 
     useEffect(()=>{
         getAnimal()
+        getDashboard()
         document.title = `${decodeURIComponent(name)}`
     },[])
     
@@ -47,7 +65,7 @@ export default function AnimalPage() {
         <div className="flex flex-col justify-start items-center bg-gradient-to-r from-gray-300 via-white to-gray-300 min-h-screen">
             <Header></Header>   
 
-            <AnimalInfo animal={animal}></AnimalInfo>
+            <AnimalInfo animal={animal} user={user}></AnimalInfo>
         </div>
     )
 }

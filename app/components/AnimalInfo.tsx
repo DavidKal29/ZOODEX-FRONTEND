@@ -1,12 +1,14 @@
 import React from "react";
 import { Animal } from "../types/animal";
+import { User } from "../types/user";
 import AnimalStatCard from "./AnimalStatCard";
 
 interface AnimalInfoProps {
-  animal: Animal;
+  animal: Animal,
+  user:User
 }
 
-export default function AnimalInfo({ animal }: AnimalInfoProps) {
+export default function AnimalInfo({animal, user}: AnimalInfoProps) {
 
   if (!animal) {
     return (
@@ -19,8 +21,15 @@ export default function AnimalInfo({ animal }: AnimalInfoProps) {
   return (
     <section className="px-4 py-10 lg:py-16 mt-24 xl:mx-12">
 
-      <div className="bg-white shadow-xl rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-0">
+      <div className="relative bg-white shadow-xl rounded-2xl grid grid-cols-1 lg:grid-cols-2 gap-0">
 
+        {/* Boton de Admin */}
+        {user && (
+          <button className="bg-red-500 z-10 text-white cursor-pointer absolute rounded-full w-10 h-10 flex justify-center items-center -top-3 -right-1">
+            <p><i className="fa-solid fa-pen"></i></p>
+          </button>
+        )}
+        
         {/* Imagen */}
         <div className="flex flex-col justify-center items-center bg-gray-100 p-8">
           <img
@@ -75,6 +84,8 @@ export default function AnimalInfo({ animal }: AnimalInfoProps) {
             <AnimalStatCard icon="fa-bolt" color="text-red-600" title="Velocidad"
               value={`${animal.speed} km/h`}
             />
+
+            
 
           </div>
 
