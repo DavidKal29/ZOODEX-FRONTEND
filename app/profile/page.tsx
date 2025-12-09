@@ -21,7 +21,7 @@ export default function Profile() {
             if (data.success) {
                 setForm({...form, email:data.user.email, username:data.user.username})
             } else {
-                toast.error(data.error)
+                router.push('/login')
             }
         })
         .catch(() => { toast.error('Error al enviar datos') })
@@ -64,7 +64,7 @@ export default function Profile() {
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
     
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/login/`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/editProfile/`, {
             credentials: 'include',
             method: 'POST',
             body: JSON.stringify(form),
@@ -72,8 +72,8 @@ export default function Profile() {
         })
         .then(res => res.json())
         .then(data => {
-            if (data.success) {
-                
+            if (data.success) {  
+                toast.success(data.success)
                     
             } else {
                 toast.error(data.error)
