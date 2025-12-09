@@ -1,5 +1,7 @@
 import { useParams, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
+import {User} from '../types/user'
+import { toast } from "sonner"
 
 export default function Header() {
     const [menu, setMenu] = useState(false);
@@ -9,10 +11,7 @@ export default function Header() {
     const params = useParams();
     const searchParam = params?.search ?? ''
 
-    
-    useEffect(()=>{
-        setSearch(decodeURIComponent(searchParam))
-    },[searchParam])
+    const [user,setUser] = useState<User | null>(null)
 
 
     const handleSearch = (e:React.KeyboardEvent<HTMLInputElement>)=>{
@@ -30,6 +29,26 @@ export default function Header() {
     const goToSection = (id:string)=>{
         router.push(`/#${id}`)
     }
+
+    const getDashboard = ()=>{
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/dashboard/`, {
+            credentials: 'include',
+            method: 'GET'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                setUser(data.user)  
+            }
+        })
+        .catch(() => { toast.error('Error al enviar datos') })
+    }
+
+    useEffect(()=>{
+        setSearch(decodeURIComponent(searchParam))
+        getDashboard()
+    },[searchParam])
+
 
     
     return (
@@ -65,7 +84,8 @@ export default function Header() {
                         />
                     </div>
 
-                    <button onClick={()=>{goToSection('featured')}} className="text-[16px] hover:text-blue-500 duration-500 cursor-pointer">Admin</button>
+                    {!user && (<a href='/login' className="text-[16px] hover:text-gray-500 duration-500 cursor-pointer">Login</a>)}
+                    {user && (<a href='/profile' className="text-[16px] hover:text-gray-500 duration-500 cursor-pointer">{user?.username}</a>)}
                     <button onClick={()=>{goToSection('featured')}} className="text-[16px] hover:text-blue-500 duration-500 cursor-pointer">Destacados</button>
                     <button onClick={()=>{goToSection('rankings')}} className="text-[16px] hover:text-red-500 duration-500 cursor-pointer">Rankings</button>
                     <button onClick={()=>{goToSection('dietstypes')}} className="text-[16px] hover:text-green-500 duration-500 cursor-pointer">Dietas/Tipos</button>  
@@ -110,7 +130,8 @@ export default function Header() {
 
 
                 {/* Links menú mobile */}
-                <button onClick={()=>{goToSection('featured')}} className="text-[18px] sm:text-[20px] cursor-pointer">Admin</button>
+                {!user && (<a href='/login' className="text-[18px] sm:text-[20px] cursor-pointer">Login</a>)}
+                {user && (<a href='/profile' className="text-[18px] sm:text-[20px] cursor-pointer">{user?.username}</a>)}
                 <button onClick={()=>{goToSection('featured')}} className="text-[18px] sm:text-[20px] cursor-pointer">Destacados</button>
                 <button onClick={()=>{goToSection('rankings')}} className="text-[18px] sm:text-[20px] cursor-pointer">Rankings</button>
                 <button onClick={()=>{goToSection('dietstypes')}} className="text-[18px] sm:text-[20px] cursor-pointer">Dietas/Tipos</button>
