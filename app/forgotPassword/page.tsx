@@ -4,9 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import Header from '../components/Header'
 
-export default function Login() {
-    const [form, setForm] = useState({ email: '', password: '' })
-    const [showPassword, setShowPassword] = useState(false)
+export default function ForgotPassword() {
+    const [form, setForm] = useState({ email: '' })
     
     const router = useRouter()
 
@@ -18,8 +17,7 @@ export default function Login() {
         .then(res => res.json())
         .then(data => {
             if (data.success) {
-                router.push('/profile')
-                
+                router.push('/profile') 
             }
         })
         .catch(() => { toast.error('Error al enviar datos') })
@@ -32,7 +30,7 @@ export default function Login() {
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/login/`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/forgotPassword/`, {
             credentials: 'include',
             method: 'POST',
             body: JSON.stringify(form),
@@ -42,7 +40,6 @@ export default function Login() {
         .then(data => {
             if (data.success) {
                 toast.success(data.success)
-                router.push('/profile')
                 
             } else {
                 toast.error(data.error)
@@ -52,7 +49,7 @@ export default function Login() {
     }
 
     useEffect(() => {
-        document.title = 'Login Admin'
+        document.title = 'Forgot Password'
     }, [])
 
     useEffect(()=>{
@@ -68,7 +65,7 @@ export default function Login() {
                 onSubmit={handleSubmit}
             >
                 <h1 className="text-3xl font-extrabold text-center text-gray-800">
-                    ADMIN LOGIN
+                    Forgot Password
                 </h1>
 
                 {/* Email */}
@@ -85,27 +82,7 @@ export default function Login() {
                         className="mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 placeholder:text-gray-500 text-gray-500"
                     />
                 </div>
-
-                {/* Contraseña */}
-                <div className="flex flex-col relative">
-                    <label htmlFor="password" className="text-sm font-semibold text-gray-600">
-                        Contraseña
-                    </label>
-                    <input
-                        type={showPassword ? "text" : "password"}
-                        name="password"
-                        value={form.password}
-                        onChange={handleChange}
-                        autoComplete="off"
-                        placeholder="Introduce tu contraseña"
-                        className="mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 placeholder:text-gray-500 text-gray-500"
-                    />
-
-                    <i
-                        className={`fa-solid ${showPassword ? "fa-eye-slash" : "fa-eye"} absolute right-3 top-9 text-gray-600 cursor-pointer`}
-                        onClick={() => setShowPassword(!showPassword)}
-                    ></i>
-                </div>
+     
 
                 {/* Submit button */}
                 <button
@@ -118,7 +95,7 @@ export default function Login() {
                 {/* Olvidaste la contraseña */}
                 <div className="text-center">
                     <p className="text-sm text-gray-600">
-                        ¿Olvidaste la contraseña? <a href="/forgotPassword" className="text-gray-800 font-bold">Recuperar</a>
+                        ¿Recordaste la contraseña? <a href="/login" className="text-gray-800 font-bold">Iniciar Sesión</a>
                     </p>
                 </div>
             </form>                              
