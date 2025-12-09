@@ -1,13 +1,14 @@
 'use client'
-import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
-import { toast } from 'sonner'
 import Header from '../components/Header'
+import Banner from '../components/Banner'
+import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
 
-export default function Login() {
-    const [form, setForm] = useState({ email: '', password: '' })
+export default function Profile() {
+    const [form, setForm] = useState({ email: '',username: '', password: '' })
     const [showPassword, setShowPassword] = useState(false)
-    
+
     const router = useRouter()
 
     const getDashboard = ()=>{
@@ -18,20 +19,51 @@ export default function Login() {
         .then(res => res.json())
         .then(data => {
             if (data.success) {
-                router.push('/profile')
-                
+                setForm({...form, email:data.user.email, username:data.user.username})
+            } else {
+                toast.error(data.error)
             }
         })
         .catch(() => { toast.error('Error al enviar datos') })
     }
 
+    const logout = ()=>{
+        toast("¿Seguro que quieres cerrar sesión?", {
+            action: {
+                label: "Cerrar sesión",
+                onClick: () => {
+                    fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/logout`, {
+                        method: 'GET',
+                        credentials: 'include',
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                    if (data.success) {
+                        router.push('/');
+                    } else {
+                        toast.error(data.error);
+                    }
+                    })
+                    .catch(error => {
+                        console.log('Error al enviar los datos a Logout');
+                        console.error(error);
+                        toast.error('Error al enviar los datos');
+                    });
+                },
+            },
+            cancel: {
+                label: "Cancelar",
+            }
+        })
+    }
+
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
-
+    
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-
+    
         fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/login/`, {
             credentials: 'include',
             method: 'POST',
@@ -41,9 +73,8 @@ export default function Login() {
         .then(res => res.json())
         .then(data => {
             if (data.success) {
-                toast.success(data.success)
-                router.push('/profile')
                 
+                    
             } else {
                 toast.error(data.error)
             }
@@ -51,11 +82,8 @@ export default function Login() {
         .catch(() => { toast.error('Error al enviar datos') })
     }
 
-    useEffect(() => {
-        document.title = 'Login Admin'
-    }, [])
-
     useEffect(()=>{
+        document.title = 'Perfil'
         getDashboard()
     },[])
 
@@ -68,7 +96,7 @@ export default function Login() {
                 onSubmit={handleSubmit}
             >
                 <h1 className="text-3xl font-extrabold text-center text-gray-800">
-                    ADMIN LOGIN
+                    EDITAR PERFIL
                 </h1>
 
                 {/* Email */}
@@ -82,6 +110,21 @@ export default function Login() {
                         value={form.email}
                         onChange={handleChange}
                         placeholder="Introduce tu email"
+                        className="mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 placeholder:text-gray-500 text-gray-500"
+                    />
+                </div>
+
+                {/* Username */}
+                <div className="flex flex-col">
+                    <label htmlFor="email" className="text-sm font-semibold text-gray-600">
+                        Username
+                    </label>
+                    <input
+                        type="text"
+                        name="username"
+                        value={form.username}
+                        onChange={handleChange}
+                        placeholder="Introduce tu username"
                         className="mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 placeholder:text-gray-500 text-gray-500"
                     />
                 </div>
@@ -115,14 +158,19 @@ export default function Login() {
                     Enviar
                 </button>
 
-                {/* Olvidaste la contraseña */}
-                <div className="text-center">
-                    <p className="text-sm text-gray-600">
-                        ¿Olvidaste la contraseña? <a href="#" className="text-gray-800 font-bold">Recuperar</a>
-                    </p>
-                </div>
+                {/* cerrar sesion button */}
+                <button
+                    type="button"
+                    onClick={()=>{logout()}}
+                    className="cursor-pointer bg-gradient-to-r from-red-500 to-red-700 hover:bg-red-800 text-whitefont-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105"
+                >
+                    Cerrar Sesión
+                </button>
+
+                
             </form>                              
+
+            
         </div>
-        
     )
 }
