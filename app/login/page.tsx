@@ -11,7 +11,7 @@ export default function Login() {
     const router = useRouter()
 
     const getDashboard = ()=>{
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/dashboard/`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/adminsystem/dashboard/`, {
             credentials: 'include',
             method: 'GET'
         })
@@ -32,7 +32,7 @@ export default function Login() {
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/login/`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/authsystem/login/`, {
             credentials: 'include',
             method: 'POST',
             body: JSON.stringify(form),

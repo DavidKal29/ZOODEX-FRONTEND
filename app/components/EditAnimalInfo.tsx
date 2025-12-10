@@ -58,7 +58,7 @@ export default function EditAnimalInfo({animal,metadata}:EditAnimalInfoProps) {
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
 
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/editAnimal/${animal?.id}`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/adminsystem/editAnimal/${animal?.id}`, {
             method: 'POST',
             credentials: 'include',
             headers:{'Content-Type':'application/json'},

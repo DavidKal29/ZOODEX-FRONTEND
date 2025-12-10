@@ -17,7 +17,7 @@ export default function EditAnimal() {
     const {id} = useParams<{id:string}>()
 
     const getDashboard = ()=>{
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/dashboard/`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/adminsystem/dashboard/`, {
             credentials: 'include',
             method: 'GET'
         })
@@ -33,7 +33,7 @@ export default function EditAnimal() {
     }
 
     const getAnimal = ()=>{
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/editAnimal/${id}`,{
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/adminsystem/editAnimal/${id}`,{
             method:'GET',
             credentials:'include'
         })

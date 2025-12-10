@@ -40,7 +40,7 @@ export default function AnimalPage() {
     }
 
     const getDashboard = ()=>{
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/dashboard/`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/adminsystem/dashboard/`, {
             credentials: 'include',
             method: 'GET'
         })

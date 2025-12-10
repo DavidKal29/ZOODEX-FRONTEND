@@ -12,7 +12,7 @@ export default function Profile() {
     const router = useRouter()
 
     const getDashboard = ()=>{
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/dashboard/`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/adminsystem/dashboard/`, {
             credentials: 'include',
             method: 'GET'
         })
@@ -32,7 +32,7 @@ export default function Profile() {
             action: {
                 label: "Cerrar sesión",
                 onClick: () => {
-                    fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/logout`, {
+                    fetch(`${process.env.NEXT_PUBLIC_API_URL}/adminsystem/logout`, {
                         method: 'GET',
                         credentials: 'include',
                     })
@@ -64,7 +64,7 @@ export default function Profile() {
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
     
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/editProfile/`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/adminsystem/editProfile/`, {
             credentials: 'include',
             method: 'POST',
             body: JSON.stringify(form),
@@ -74,6 +74,7 @@ export default function Profile() {
         .then(data => {
             if (data.success) {  
                 toast.success(data.success)
+                form.password = ''
                     
             } else {
                 toast.error(data.error)

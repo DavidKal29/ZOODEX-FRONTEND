@@ -10,7 +10,7 @@ export default function ForgotPassword() {
     const router = useRouter()
 
     const getDashboard = ()=>{
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/dashboard/`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/adminsystem/dashboard/`, {
             credentials: 'include',
             method: 'GET'
         })
@@ -30,7 +30,7 @@ export default function ForgotPassword() {
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/animals/forgotPassword/`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/authsystem/forgotPassword/`, {
             credentials: 'include',
             method: 'POST',
             body: JSON.stringify(form),
