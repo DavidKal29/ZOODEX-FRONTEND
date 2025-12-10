@@ -13,7 +13,6 @@ export default function RankingAnimalCard({animal,top,feature,medide,color}:Rank
   return (
     <a
         href={`/animal/${animal?.name}`}
-        target='_blank'
         className="relative border-2 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300 bg-white"
         style={{ borderColor: animal.color }}
     >

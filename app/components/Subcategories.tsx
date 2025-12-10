@@ -54,7 +54,6 @@ export default function Subcategories({name}:SubcategoriesProps) {
                     {subcategories.map((subcategory:Subcategory,index:number)=>(
                         <a
                             href={`/subcategories/${encodeURIComponent(subcategory.name.toLowerCase())}`}
-                            target='_blank'
                             key={index}
                             className="card border-2 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 bg-white"
                             style={{ borderColor: subcategory.color }}

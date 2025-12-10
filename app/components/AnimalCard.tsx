@@ -9,7 +9,6 @@ export default function AnimalCard({animal}:AnimalCardProps) {
   return (
     <a
         href={`/animal/${animal?.name}`}
-        target='_blank'
         className="border-2 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 bg-white"
         style={{ borderColor: animal.color }}
         >
