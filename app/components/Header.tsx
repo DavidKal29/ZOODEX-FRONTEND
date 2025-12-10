@@ -56,10 +56,10 @@ export default function Header() {
 
             {/* Logo */}
             <div className="flex items-center gap-4">
-                <a href="/" className="w-[25%] min-[568px]:w-[15%] sm:w-[12%] md:w-[14%] lg:w-[10%] xl:w-[12%]">
+                <a href="/" className="w-[25%] min-[568px]:w-[15%] sm:w-[12%] md:w-[14%] lg:w-[30%] xl:w-[12%]">
                     <img src="/images/logo.png" className="w-full" alt="Logo" />
                 </a>
-                <div>
+                <div className="lg:hidden xl:block">
                     <h1 className="text-lg font-semibold">ZOODEX</h1>
                     <p className="text-xs text-slate-500">Tu zoológico digital - explora, compara, descubre</p>
                 </div>

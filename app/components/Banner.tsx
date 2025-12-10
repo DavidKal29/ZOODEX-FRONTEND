@@ -24,7 +24,7 @@ export default function Banner() {
             </h2>
 
             <p className="mt-2 text-sm md:text-lg max-w-xl font-semibold opacity-95">
-                Una enciclopedia interactiva de animales — explora por zona, categoría, dieta y descubre rankings épicos.
+                Una web de animales — explora por categoría, dieta y descubre rankings épicos.
             </p>
         </div>
 
