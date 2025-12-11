@@ -36,7 +36,7 @@ export default function RankingAnimalCard({animal,top,feature,medide,color}:Rank
         {/* Información del animal */}
         <div className="p-4 flex flex-col gap-2">
             <p className="font-semibold text-sm" style={{color:color}}>TOP {top}</p>
-            <h3 className="text-lg font-semibold">{animal?.name}</h3>
+            <h3 className="text-lg font-semibold text-black">{animal?.name}</h3>
 
             {/* Tipo con color dinámico */}
             <span

@@ -47,7 +47,7 @@ export default function TypeAnimals({name,page}:TypeAnimalsProps) {
     
     return (
         <section className="w-full px-6 xl:px-24 py-12">
-            <h3 className="text-xl font-semibold mb-4">{decodeURIComponent(name[0].toUpperCase() + name.slice(1))}</h3>
+            <h3 className="text-xl font-semibold mb-4 text-black">{decodeURIComponent(name[0].toUpperCase() + name.slice(1))}</h3>
 
             {(!animals || animals.length === 0) ? (
                 <div className="w-full flex justify-center items-center h-64">

@@ -19,7 +19,7 @@ export default function Categories({categories}:CategoriesProps) {
   
   return (
     <section id='categories' className="w-full px-6 xl:px-24 py-8 scroll-mt-18">
-        <h3 className="text-xl font-semibold mb-4">Explorar por Categoría</h3>
+        <h3 className="text-xl font-semibold mb-4 text-black">Explorar por Categoría</h3>
 
         {(!categories || categories.length === 0) ? (
             <div className="w-full flex justify-center items-center h-64">
@@ -50,7 +50,7 @@ export default function Categories({categories}:CategoriesProps) {
                         {/* Información de la categoría */}
                         <div className="p-4 flex flex-col gap-2">
                             <p className="text-gray-500 text-sm">N&#176; {category.id}</p>
-                            <h3 className="text-lg font-semibold">{category.name}</h3>
+                            <h3 className="text-lg font-semibold text-black">{category.name}</h3>
                         </div>
                     </a>
                 ))}

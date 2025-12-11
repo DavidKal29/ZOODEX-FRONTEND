@@ -24,7 +24,7 @@ export default function AnimalCard({animal}:AnimalCardProps) {
         {/* Información del animal */}
         <div className="p-4 flex flex-col gap-2">
             <p className="text-gray-500 text-sm">N&#176; {animal?.id}</p>
-            <h3 className="text-lg font-semibold">{animal?.name}</h3>
+            <h3 className="text-lg font-semibold text-black">{animal?.name}</h3>
 
             {/* Tipo con color dinámico */}
             <span

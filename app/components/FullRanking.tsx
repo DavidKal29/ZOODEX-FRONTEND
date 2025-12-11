@@ -28,7 +28,7 @@ export default function FullRanking({ranking,name,totalPages,page}:FullRankingPr
   
     return (
         <section className="w-full px-6 xl:px-24 py-12">
-            <h3 className="text-xl font-semibold mb-4">{decodeURIComponent(name)} <i className={`${icons[index]}`} style={{color:colors[index]}}></i></h3>
+            <h3 className="text-xl font-semibold mb-4 text-black">{decodeURIComponent(name)} <i className={`${icons[index]}`} style={{color:colors[index]}}></i></h3>
 
             {(!ranking || ranking.length === 0) ? (
                 <div className="w-full flex justify-center items-center h-64">

@@ -15,10 +15,10 @@ export default function AnimalStatCard({
 }: AnimalStatCardProps) {
   return (
     <div className="bg-white p-4 rounded-xl lg:px-2 flex flex-col items-start w-full drop-shadow-md">
-      <h3 className="text-sm font-bold flex items-center gap-2">
+      <h3 className="text-sm font-bold flex items-center gap-2 text-black">
         <i className={`fa-solid ${icon} ${color}`}></i> {title}
       </h3>
-      <p>{value}</p>
+      <p className='text-black'>{value}</p>
     </div>
   )
 }

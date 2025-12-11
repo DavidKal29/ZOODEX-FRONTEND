@@ -37,7 +37,7 @@ export default function AnimalInfo({animal, user}: AnimalInfoProps) {
             alt={animal.name}
             className="object-contain max-h-[300px] lg:max-h-[400px]"
           />
-          <h2 className="text-2xl md:text-3xl font-bold mt-6">{animal.name}</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mt-6 text-black">{animal.name}</h2>
         </div>
 
         {/* Datos */}
@@ -89,7 +89,7 @@ export default function AnimalInfo({animal, user}: AnimalInfoProps) {
 
           {/* Descripción */}
           <div className="bg-gray-50 rounded-xl p-6">
-            <h3 className="text-lg font-semibold mb-2">Descripción</h3>
+            <h3 className="text-lg font-semibold mb-2 text-black">Descripción</h3>
             <p className="leading-relaxed text-gray-700">
               {animal.description}
             </p>

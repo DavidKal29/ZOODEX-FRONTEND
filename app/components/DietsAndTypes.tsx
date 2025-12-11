@@ -40,7 +40,7 @@ export default function DietsAndTypes({diets,types}:DietsAndTypesProps) {
 
     return (
         <section id='dietstypes' className="w-full px-6 xl:px-24 py-8 scroll-mt-18">
-            <h3 className="text-xl font-semibold mb-4">Explorar por Dieta o Tipo</h3>
+            <h3 className="text-xl font-semibold mb-4 text-black">Explorar por Dieta o Tipo</h3>
 
 
             {(!types || types.length === 0 || !diets || diets.length === 0) ? (

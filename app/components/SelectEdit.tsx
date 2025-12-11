@@ -10,12 +10,12 @@ interface SelectEditProps {
 export default function SelectEdit({label,name,value,options,icon,onChange}:SelectEditProps) {
     return (
         <div className="bg-white p-4 rounded-xl drop-shadow-md flex flex-col">
-            <h3 className="text-sm font-bold flex items-center gap-2">
+            <h3 className="text-sm font-bold flex items-center gap-2 text-black">
                 <i className={`fa-solid ${icon}`}></i> {label}
             </h3>
 
             <select
-                className="border rounded-md p-1 mt-1"
+                className="border rounded-md p-1 mt-1 text-black"
                 name={name}
                 value={value}
                 onChange={onChange}

@@ -51,7 +51,7 @@ export default function Rankings() {
   
     return (
         <section id='rankings' className="w-full px-6 xl:px-24 py-8 scroll-mt-18">
-            <h3 className="text-xl font-semibold mb-4">Rankings</h3>
+            <h3 className="text-xl font-semibold mb-4 text-black">Rankings</h3>
 
             {(!rankings || rankings.length === 0) ? (
             <div className="w-full flex justify-center items-center h-64">
@@ -68,7 +68,7 @@ export default function Rankings() {
                         className="bg-white rounded-lg p-4 shadow-sm hover:scale-105 duration-300 cursor-pointer transition-all hover:shadow-2xl"
                     >
                         {/* Titulo del ranking */}
-                        <h4 className="font-semibold mb-3 flex items-center gap-2">
+                        <h4 className="font-semibold mb-3 flex items-center gap-2 text-black">
                             {key} <i className={`${icons[index]}` } style={{color:colors[index]}}></i>
                         </h4>
 

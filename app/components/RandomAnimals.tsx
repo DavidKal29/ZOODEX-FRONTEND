@@ -21,7 +21,7 @@ export default function RandomAnimals({randomAnimals}:RandomAnimalsProps) {
   
   return (
     <section id='featured' className="w-full px-6 xl:px-24 py-8 scroll-mt-18">
-        <h3 className="text-xl font-semibold mb-4">Animales Destacados</h3>
+        <h3 className="text-xl font-semibold mb-4 text-black">Animales Destacados</h3>
 
         {(!randomAnimals || randomAnimals.length === 0) ? (
           <div className="w-full flex justify-center items-center h-64">

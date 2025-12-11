@@ -60,7 +60,7 @@ export default function Header() {
                     <img src="/images/logo.png" className="w-full" alt="Logo" />
                 </a>
                 <div className="lg:hidden xl:block">
-                    <h1 className="text-lg font-semibold">ZOODEX</h1>
+                    <h1 className="text-lg font-semibold text-black">ZOODEX</h1>
                     <p className="text-xs text-slate-500">Tu zoológico digital - explora, compara, descubre</p>
                 </div>
             </div>
@@ -76,7 +76,7 @@ export default function Header() {
                         <input
                             type="text"
                             placeholder="Busca por nombre o ID"
-                            className="flex-1 outline-none text-sm sm:text-base bg-transparent"
+                            className="flex-1 outline-none text-sm sm:text-base bg-transparent text-slate-500 placeholder:text-slate-500"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             onKeyDown={handleSearch}
@@ -84,18 +84,18 @@ export default function Header() {
                         />
                     </div>
 
-                    {!user && (<a href='/login' className="text-[16px] hover:text-gray-500 duration-500 cursor-pointer">Login</a>)}
-                    {user && (<a href='/profile' className="text-[16px] hover:text-gray-500 duration-500 cursor-pointer">{user?.username}</a>)}
-                    <button onClick={()=>{goToSection('featured')}} className="text-[16px] hover:text-blue-500 duration-500 cursor-pointer">Destacados</button>
-                    <button onClick={()=>{goToSection('dietstypes')}} className="text-[16px] hover:text-green-500 duration-500 cursor-pointer">Dietas/Tipos</button>  
-                    <button onClick={()=>{goToSection('categories')}} className="text-[16px] hover:text-yellow-500 duration-500 cursor-pointer">Categorías</button>   
-                    <a href="/rankings" className="text-[16px] hover:text-red-500 duration-500 cursor-pointer">Rankings</a>
-                    <a href='/all/1' className="text-[16px] hover:text-orange-500 duration-500 cursor-pointer">ZooDex</a>
+                    {!user && (<a href='/login' className="text-[16px] hover:text-gray-500 duration-500 cursor-pointer text-black">Login</a>)}
+                    {user && (<a href='/profile' className="text-[16px] hover:text-gray-500 duration-500 cursor-pointer text-black">{user?.username}</a>)}
+                    <button onClick={()=>{goToSection('featured')}} className="text-[16px] hover:text-blue-500 duration-500 cursor-pointer text-black">Destacados</button>
+                    <button onClick={()=>{goToSection('dietstypes')}} className="text-[16px] hover:text-green-500 duration-500 cursor-pointer text-black">Dietas/Tipos</button>  
+                    <button onClick={()=>{goToSection('categories')}} className="text-[16px] hover:text-yellow-500 duration-500 cursor-pointer text-black">Categorías</button>   
+                    <a href="/rankings" className="text-[16px] hover:text-red-500 duration-500 cursor-pointer text-black">Rankings</a>
+                    <a href='/all/1' className="text-[16px] hover:text-orange-500 duration-500 cursor-pointer text-black">ZooDex</a>
                 </div>
 
                 {/* Botón hamburguesa */}
                 <button className="lg:hidden text-2xl" onClick={() => setMenu(!menu)}>
-                    <i className="fa-solid fa-bars"></i>
+                    <i className="fa-solid fa-bars text-black"></i>
                 </button>
             </div>
 
@@ -118,8 +118,8 @@ export default function Header() {
                     {/* Input */}
                     <input
                         type="text"
-                        placeholder="Busca por nombre o ID"
-                        className="flex-1 outline-none text-base bg-transparent"
+                        placeholder="Nombre o ID"
+                        className="flex-1 outline-none text-base bg-transparent text-slate-500"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         required
@@ -130,13 +130,13 @@ export default function Header() {
 
 
                 {/* Links menú mobile */}
-                {!user && (<a href='/login' className="text-[18px] sm:text-[20px] cursor-pointer">Login</a>)}
-                {user && (<a href='/profile' className="text-[18px] sm:text-[20px] cursor-pointer">{user?.username}</a>)}
-                <button onClick={()=>{goToSection('featured')}} className="text-[18px] sm:text-[20px] cursor-pointer">Destacados</button>
-                <button onClick={()=>{goToSection('dietstypes')}} className="text-[18px] sm:text-[20px] cursor-pointer">Dietas/Tipos</button>
-                <button onClick={()=>{goToSection('categories')}} className="text-[18px] sm:text-[20px] cursor-pointer">Categorías</button>   
-                <a href="/rankings" className="text-[18px] sm:text-[20px] cursor-pointer">Rankings</a>
-                <a href='/all/1' className="text-[18px] sm:text-[20px] cursor-pointer">ZooDex</a>  
+                {!user && (<a href='/login' className="text-[18px] sm:text-[20px] cursor-pointer text-black">Login</a>)}
+                {user && (<a href='/profile' className="text-[18px] sm:text-[20px] cursor-pointer text-black">{user?.username}</a>)}
+                <button onClick={()=>{goToSection('featured')}} className="text-[18px] sm:text-[20px] cursor-pointer text-black">Destacados</button>
+                <button onClick={()=>{goToSection('dietstypes')}} className="text-[18px] sm:text-[20px] cursor-pointer text-black">Dietas/Tipos</button>
+                <button onClick={()=>{goToSection('categories')}} className="text-[18px] sm:text-[20px] cursor-pointer text-black">Categorías</button>   
+                <a href="/rankings" className="text-[18px] sm:text-[20px] cursor-pointer text-black">Rankings</a>
+                <a href='/all/1' className="text-[18px] sm:text-[20px] cursor-pointer text-black">ZooDex</a>  
             </nav>
         </header>
     )

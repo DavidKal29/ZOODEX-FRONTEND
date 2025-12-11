@@ -205,8 +205,8 @@ export default function EditAnimalInfo({animal,metadata}:EditAnimalInfoProps) {
 
                     {/* DESCRIPCION */}
                     <div className="bg-gray-50 rounded-xl p-6 flex flex-col">
-                        <h3 className="text-lg font-semibold mb-2">Descripción</h3>
-                        <textarea rows={4} name="description" className="border rounded-md p-2 resize-none"
+                        <h3 className="text-lg font-semibold mb-2 text-black">Descripción</h3>
+                        <textarea rows={4} name="description" className="border-black rounded-md p-2 resize-none text-black"
                         value={form.description} onChange={handleChange}/>
                     </div>
 
