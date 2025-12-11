@@ -4,8 +4,8 @@ import { User } from "../types/user";
 import AnimalStatCard from "./AnimalStatCard";
 
 interface AnimalInfoProps {
-  animal: Animal,
-  user:User
+  animal: Animal | null,
+  user:User | null
 }
 
 export default function AnimalInfo({animal, user}: AnimalInfoProps) {

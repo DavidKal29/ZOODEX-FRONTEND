@@ -74,7 +74,7 @@ export default function Rankings() {
 
                         {/* Lista con todos los animales de ese ranking */}
                         <ol className="pl-5 space-y-3 text-sm text-black">
-                            {rankings[key].map((animal:Animal, index2:number) => (
+                            {(rankings as any)[key].map((animal:Animal, index2:number) => (
                                 <li key={index2} className="flex items-center gap-3 py-1">
                                     <div className={`text-sm font-extrabold`} style={{color:colors[index]}}>
                                         {index2 + 1}
@@ -93,7 +93,7 @@ export default function Rankings() {
 
                                     {/* Medida del ranking */}
                                     <div className="text-sm text-gray-700 font-mono">
-                                        {animal[features[index]]} {medides[index]}
+                                        {(animal as any)[features[index]]} {medides[index]}
                                     </div>
                                 </li>
                             ))}

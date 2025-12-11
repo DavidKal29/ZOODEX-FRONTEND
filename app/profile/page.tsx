@@ -54,7 +54,7 @@ export default function Profile() {
             cancel: {
                 label: "Cancelar",
             }
-        })
+        } as any)
     }
 
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {

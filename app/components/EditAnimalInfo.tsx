@@ -19,12 +19,12 @@ export default function EditAnimalInfo({animal,metadata}:EditAnimalInfoProps) {
         subcategory:'',
         diet:'',
         type:'',
-        weight:'',
-        height:'',
-        inteligence:'',
-        danger:'',
-        longevity:'',
-        speed:'',
+        weight:0,
+        height:0,
+        inteligence:0,
+        danger:0,
+        longevity:0,
+        speed:0,
         description:'',
     })
 

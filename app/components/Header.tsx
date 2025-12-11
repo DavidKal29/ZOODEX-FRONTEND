@@ -45,7 +45,7 @@ export default function Header() {
     }
 
     useEffect(()=>{
-        setSearch(decodeURIComponent(searchParam))
+        setSearch(decodeURIComponent(searchParam as string))
         getDashboard()
     },[searchParam])
 

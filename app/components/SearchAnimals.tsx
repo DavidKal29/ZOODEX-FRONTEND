@@ -3,7 +3,7 @@ import { Animal } from '../types/animal'
 import AnimalCard from './AnimalCard'
 
 interface SearchAnimalsProps {
-    animals: Animal[]
+    animals: Animal[] | []
     error: boolean
 }
 

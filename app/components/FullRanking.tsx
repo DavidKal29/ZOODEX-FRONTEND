@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation'
 import Pagination from './Pagination'
 
 interface FullRankingProps{
-    ranking:Animal[],
+    ranking:Animal[] | [],
     name:string,
     totalPages:number,
     page:string

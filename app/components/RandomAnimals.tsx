@@ -3,7 +3,7 @@ import {Animal} from "../types/animal"
 import AnimalCard from './AnimalCard'
 
 interface RandomAnimalsProps {
-    randomAnimals:Animal[]
+    randomAnimals:Animal[] | []
 }
 
 export default function RandomAnimals({randomAnimals}:RandomAnimalsProps) {

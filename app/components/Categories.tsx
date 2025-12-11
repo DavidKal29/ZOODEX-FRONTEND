@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import {Category} from '../types/category'
 
 interface CategoriesProps{
-    categories:Category[]
+    categories:Category[] | []
 }
 
 export default function Categories({categories}:CategoriesProps) {

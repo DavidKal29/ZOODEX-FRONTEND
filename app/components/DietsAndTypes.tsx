@@ -3,8 +3,8 @@ import {Diet} from '../types/diets'
 import {Type} from '../types/type'
 
 interface DietsAndTypesProps{
-    diets:Diet[],
-    types:Type[]
+    diets:Diet[] | [],
+    types:Type[] | []
 }
 
 export default function DietsAndTypes({diets,types}:DietsAndTypesProps) {

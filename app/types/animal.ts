@@ -9,7 +9,10 @@ export interface Animal{
     danger:number
     longevity:number
     image:string
-    id_subcategory:number
-    id_diet:number
+    type:string,
+    color:string,
+    category:string,
+    subcategory:string,
+    diet:string
 
 }
