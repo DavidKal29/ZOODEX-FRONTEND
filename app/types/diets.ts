@@ -1,4 +1,4 @@
-interface Diet{
+export interface Diet{
     id:number,
     name:string,
     color:string,
