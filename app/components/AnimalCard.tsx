@@ -13,7 +13,7 @@ export default function AnimalCard({animal}:AnimalCardProps) {
         style={{ borderColor: animal?.color }}
         >
         {/* Imagen del animal */}
-        <div className="h-48 w-full overflow-hidden flex justify-center items-center bg-gradient-to-r from-white via-gray-200 to-gray-300 py-4 drop-shadow-md">
+        <div className="h-48 w-full rounded-t-xl overflow-hidden flex justify-center items-center bg-gradient-to-r from-white via-gray-200 to-gray-300 py-4 drop-shadow-md">
             <img
             className="h-full object-contain"
             src={`/animals/${animal?.image}`}
