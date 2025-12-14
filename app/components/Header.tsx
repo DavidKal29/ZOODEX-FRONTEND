@@ -75,6 +75,7 @@ export default function Header() {
                         <i className="fa-solid fa-magnifying-glass text-slate-400 mr-2"></i>
                         <input
                             type="text"
+                            autoComplete='off'
                             placeholder="Busca por nombre o ID"
                             className="flex-1 outline-none text-sm sm:text-base bg-transparent text-slate-500 placeholder:text-slate-500"
                             value={search}

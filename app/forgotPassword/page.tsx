@@ -61,6 +61,7 @@ export default function ForgotPassword() {
             <Header></Header>
 
             <form
+                autoComplete='off'
                 className="bg-white drop-shadow-2xl rounded-2xl max-[360px]:mt-24 min-[568px]:mt-26 mt-0 p-8 m-2 sm:w-full max-w-md  flex flex-col gap-6 text-white"
                 onSubmit={handleSubmit}
             >

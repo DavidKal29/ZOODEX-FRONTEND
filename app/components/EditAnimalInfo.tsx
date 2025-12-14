@@ -86,6 +86,7 @@ export default function EditAnimalInfo({animal,metadata}:EditAnimalInfoProps) {
     return (
         <section className="px-4 py-10 lg:py-16 xl:mx-12">
             <form
+                autoComplete='off'
                 onSubmit={handleSubmit}
                 className="relative bg-white shadow-xl rounded-2xl grid grid-cols-1 lg:grid-cols-2 gap-0 mt-24 xl:mx-12 max-w-[1100px] w-full"
             >
