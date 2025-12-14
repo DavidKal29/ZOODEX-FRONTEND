@@ -91,7 +91,7 @@ export default function Header() {
                     <button onClick={()=>{goToSection('dietstypes')}} className="text-[16px] hover:text-green-500 duration-500 cursor-pointer text-black">Dietas/Tipos</button>  
                     <button onClick={()=>{goToSection('categories')}} className="text-[16px] hover:text-yellow-500 duration-500 cursor-pointer text-black">Categorías</button>   
                     <a href="/rankings" className="text-[16px] hover:text-red-500 duration-500 cursor-pointer text-black">Rankings</a>
-                    <a href='/all/1' className="text-[16px] hover:text-orange-500 duration-500 cursor-pointer text-black">ZooDex</a>
+                    <a href='/all/1' className="text-[16px] hover:text-orange-500 duration-500 cursor-pointer text-black">Todos</a>
                 </div>
 
                 {/* Botón hamburguesa */}
@@ -137,7 +137,7 @@ export default function Header() {
                 <button onClick={()=>{goToSection('dietstypes')}} className="text-[18px] sm:text-[20px] cursor-pointer text-black">Dietas/Tipos</button>
                 <button onClick={()=>{goToSection('categories')}} className="text-[18px] sm:text-[20px] cursor-pointer text-black">Categorías</button>   
                 <a href="/rankings" className="text-[18px] sm:text-[20px] cursor-pointer text-black">Rankings</a>
-                <a href='/all/1' className="text-[18px] sm:text-[20px] cursor-pointer text-black">ZooDex</a>  
+                <a href='/all/1' className="text-[18px] sm:text-[20px] cursor-pointer text-black">Todos</a>  
             </nav>
         </header>
     )
