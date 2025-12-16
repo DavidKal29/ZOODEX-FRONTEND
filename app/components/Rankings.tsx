@@ -64,6 +64,7 @@ export default function Rankings() {
                 {Object.keys(rankings).map((key:string, index:number) => (
                     <a  
                         href={`/ranking/${encodeURIComponent(key)}/1`}
+                        target='_blank'
                         key={index} 
                         className="bg-white rounded-lg p-4 shadow-sm hover:scale-105 duration-300 cursor-pointer transition-all hover:shadow-2xl"
                     >

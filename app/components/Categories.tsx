@@ -32,6 +32,7 @@ export default function Categories({categories}:CategoriesProps) {
                 {categories.map((category:Category,index:number)=>(
                     <a
                         href={`/categories/${encodeURIComponent(category.name.toLowerCase())}`}
+                        target='_blank'
                         key={index}
                         className="card border-2 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 bg-white"
                         style={{ borderColor: category.color }}
